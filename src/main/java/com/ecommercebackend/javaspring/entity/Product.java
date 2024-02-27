@@ -2,10 +2,7 @@ package com.ecommercebackend.javaspring.entity;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Null;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,12 +19,14 @@ public class Product {
     @Column(name = "id")
     private Long id ;
 
+    @NotNull
     @Size(min = 2 , max = 45 , message = "name should be between 2 and 45 ")
     @NotBlank(message = "name cannot be blank")
     @Column(name = "name")
     private String name;
 
     @NotNull(message = "price cannot be null")
+    @NotBlank(message = "price cannot be left blank")
     @Column(name = "price")
     private Double price;
 
@@ -37,15 +36,18 @@ public class Product {
 
     @Size(min = 0 , message = "sell count cannot be less than 0")
     @NotNull(message = "sell count cannot be null - should be minimum 0")
+    @NotBlank(message = "sell count cannot be left blank")
     @Column(name = "sell_count")
     private Long sellCount;
 
     @Size(min = 0 , message = "stock should be min 0")
-    @NotNull
+    @NotNull(message = "stock cannot be null")
+    @NotBlank(message = "sell count cannot be left blank")
     @Column(name = "stock")
     private Long stock;
 
-    @NotNull
+    @NotNull(message = "store_id cannot be null")
+    @NotBlank(message = "store_id cannot be left blank")
     @Column(name = "store_id")
     private Long storeId;
 
