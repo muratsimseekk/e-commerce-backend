@@ -1,1 +1,12 @@
+/Users/muratsimsek/Workintech/e-commerce-backend/src/main/java/com/ecommercebackend/javaspring/controller/CategoryController.java
+/Users/muratsimsek/Workintech/e-commerce-backend/src/main/java/com/ecommercebackend/javaspring/service/ProductServiceImpl.java
+/Users/muratsimsek/Workintech/e-commerce-backend/src/main/java/com/ecommercebackend/javaspring/service/CategoryService.java
+/Users/muratsimsek/Workintech/e-commerce-backend/src/main/java/com/ecommercebackend/javaspring/entity/Category.java
+/Users/muratsimsek/Workintech/e-commerce-backend/src/main/java/com/ecommercebackend/javaspring/repository/ProductRepository.java
+/Users/muratsimsek/Workintech/e-commerce-backend/src/main/java/com/ecommercebackend/javaspring/config/SecurityConfig.java
+/Users/muratsimsek/Workintech/e-commerce-backend/src/main/java/com/ecommercebackend/javaspring/entity/Product.java
 /Users/muratsimsek/Workintech/e-commerce-backend/src/main/java/com/ecommercebackend/javaspring/JavaSpringApplication.java
+/Users/muratsimsek/Workintech/e-commerce-backend/src/main/java/com/ecommercebackend/javaspring/service/ProductService.java
+/Users/muratsimsek/Workintech/e-commerce-backend/src/main/java/com/ecommercebackend/javaspring/dto/ProductResponseDto.java
+/Users/muratsimsek/Workintech/e-commerce-backend/src/main/java/com/ecommercebackend/javaspring/repository/CategoryRepository.java
+/Users/muratsimsek/Workintech/e-commerce-backend/src/main/java/com/ecommercebackend/javaspring/service/CategoryServiceImpl.java

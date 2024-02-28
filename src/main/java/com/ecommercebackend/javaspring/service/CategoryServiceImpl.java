@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class CategoryServiceImpl implements CategoryService{
 
@@ -41,12 +42,18 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public Category updateCategory(Category category , Long id) {
+
         return null;
+
         //TODO Guncelleme yapacak logic i yaz.
     }
 
     @Override
     public Category deleteCategoryByID(Long id) {
+        Optional<Category> optional = categoryRepository.findById(id);
+        if (!optional.isPresent()){
+            throw new RuntimeException("id yok");
+        }
         Category deletedCategory = getCategoriesByID(id);
         categoryRepository.delete(deletedCategory);
         return deletedCategory;
