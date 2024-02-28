@@ -7,8 +7,12 @@ import com.ecommercebackend.javaspring.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ProductServiceImpl implements ProductService{
+
 
     private CategoryService categoryService;
     private ProductRepository productRepository;
@@ -17,6 +21,41 @@ public class ProductServiceImpl implements ProductService{
     public ProductServiceImpl(CategoryService categoryService, ProductRepository productRepository) {
         this.categoryService = categoryService;
         this.productRepository = productRepository;
+    }
+
+    @Override
+    public List<Product> getProductList() {
+        return productRepository.findAll();
+    }
+
+    @Override
+    public Product getProductByID(Long id) {
+        Optional<Product> optional = productRepository.findById(id);
+        if (optional.isPresent()){
+            return optional.get();
+        }
+        //TODO id eslesmeme durumu icin Exception firlat
+        throw new RuntimeException("eslesen bir product yok");
+    }
+
+    @Override
+    public Product addProduct(Product product , Long id) {
+        //1 Category id ile ilgili Category bul.
+        Category category = categoryService.getCategoriesByID(id);
+        //2. categorynin product listesini yeni product i ekle.
+        category.addProduct(product);
+        //3 . Product a category i ekle
+        product.setCategory(category);
+        //4. product i save et.
+        return productRepository.save(product);
+
+    }
+
+    @Override
+    public Product deleteProduct(Long id) {
+        Product deletedProduct = getProductByID(id);
+         productRepository.delete(deletedProduct);
+         return deletedProduct;
     }
 
 //    @Override
