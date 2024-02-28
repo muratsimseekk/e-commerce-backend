@@ -4,6 +4,7 @@ import com.ecommercebackend.javaspring.dto.ProductResponseDto;
 import com.ecommercebackend.javaspring.entity.Category;
 import com.ecommercebackend.javaspring.entity.Product;
 import com.ecommercebackend.javaspring.repository.ProductRepository;
+import com.ecommercebackend.javaspring.util.ProductDtoConvertion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,22 +25,23 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<Product> getProductList() {
-        return productRepository.findAll();
+    public List<ProductResponseDto> getProductList() {
+        List<Product> productList = productRepository.findAll();
+        return ProductDtoConvertion.convertProductList(productList);
     }
 
     @Override
-    public Product getProductByID(Long id) {
+    public ProductResponseDto getProductByID(Long id) {
         Optional<Product> optional = productRepository.findById(id);
         if (optional.isPresent()){
-            return optional.get();
+            return ProductDtoConvertion.convertProduct(optional.get());
         }
         //TODO id eslesmeme durumu icin Exception firlat
         throw new RuntimeException("eslesen bir product yok");
     }
 
     @Override
-    public Product addProduct(Product product , Long id) {
+    public ProductResponseDto addProduct(Product product , Long id) {
         //1 Category id ile ilgili Category bul.
         Category category = categoryService.getCategoriesByID(id);
         //2. categorynin product listesini yeni product i ekle.
@@ -47,18 +49,22 @@ public class ProductServiceImpl implements ProductService{
         //3 . Product a category i ekle
         product.setCategory(category);
         //4. product i save et.
-        return productRepository.save(product);
-
+         productRepository.save(product);
+        return ProductDtoConvertion.convertProduct(product);
     }
 
     @Override
-    public Product deleteProduct(Long id) {
-        Product deletedProduct = getProductByID(id);
-         productRepository.delete(deletedProduct);
-         return deletedProduct;
+    public ProductResponseDto deleteProduct(Long id) {
+        Optional<Product> optional = productRepository.findById(id);
+        if (optional.isPresent()){
+            productRepository.delete(optional.get());
+            return ProductDtoConvertion.convertProduct(optional.get());
+        }
+        return null;
+        //TODO eslesen bir id bulunmazsa Exception firlat.
     }
 
-//    @Override
+    //    @Override
 //    public ProductResponseDto save(Long categoryID, Product product) {
 //        //1 Category id ile ilgili Category bul.
 //       Category category = categoryService.getCategoriesByID(categoryID);

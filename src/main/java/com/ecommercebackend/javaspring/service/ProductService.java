@@ -1,14 +1,15 @@
 package com.ecommercebackend.javaspring.service;
 
+import com.ecommercebackend.javaspring.dto.ProductResponseDto;
 import com.ecommercebackend.javaspring.entity.Product;
 
 import java.util.List;
 
 public interface ProductService {
 
-    List<Product> getProductList();
-    Product getProductByID(Long id);
-    Product addProduct(Product product , Long categoryID);
-    Product deleteProduct(Long id);
+    List<ProductResponseDto> getProductList();
+    ProductResponseDto getProductByID(Long id);
+    ProductResponseDto addProduct(Product product , Long categoryID);
+    ProductResponseDto deleteProduct(Long id);
 
 }
