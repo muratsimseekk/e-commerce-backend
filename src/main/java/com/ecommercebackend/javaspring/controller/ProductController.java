@@ -10,6 +10,7 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
 
+    //TODO her bir product ekledigimde Category ve Product birbirini cagiriyor . Bu durumun onune gecmek icin DTO yaz .
     private ProductService productService;
 
     @Autowired
@@ -25,6 +26,7 @@ public class ProductController {
     @PostMapping("/{categoryID}")
     public Product save(@PathVariable Long categoryID , @RequestBody Product product){
         return productService.addProduct(product , categoryID);
+
     }
 
     @GetMapping("/{id}")
