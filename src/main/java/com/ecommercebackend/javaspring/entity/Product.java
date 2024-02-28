@@ -26,7 +26,6 @@ public class Product {
     private String name;
 
     @NotNull(message = "price cannot be null")
-    @NotBlank(message = "price cannot be left blank")
     @Column(name = "price")
     private Double price;
 
@@ -34,30 +33,28 @@ public class Product {
     @Column(name = "rating")
     private Double rating;
 
-    @Size(min = 0 , message = "sell count cannot be less than 0")
+    @Min(value = 0 , message = "sell count cannot be less than 0")
     @NotNull(message = "sell count cannot be null - should be minimum 0")
-    @NotBlank(message = "sell count cannot be left blank")
     @Column(name = "sell_count")
     private Long sellCount;
 
-    @Size(min = 0 , message = "stock should be min 0")
+    @Min(value = 0 , message = "stock should be min 0")
     @NotNull(message = "stock cannot be null")
-    @NotBlank(message = "sell count cannot be left blank")
     @Column(name = "stock")
     private Long stock;
 
     @NotNull(message = "store_id cannot be null")
-    @NotBlank(message = "store_id cannot be left blank")
     @Column(name = "store_id")
     private Long storeId;
 
-    @Nullable
+    @NotNull(message = "description cannot be null")
+    @NotBlank(message = "description cannot be blank")
     @Column(name = "description")
     private String description;
 
     @Nullable
     @Column(name = "images")
-    private String[] images;
+    private String images;
 
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
             CascadeType.REFRESH})
