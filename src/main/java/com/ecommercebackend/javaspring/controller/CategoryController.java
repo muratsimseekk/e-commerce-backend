@@ -34,14 +34,14 @@ public class CategoryController {
         return categoryService.addCategory(category);
     }
 
-    @PutMapping("/category/{id}")
+    @PutMapping("/{id}")
     public CategoryResponseDto updateCategory(@RequestBody Category category , @PathVariable Long id){
 
         return categoryService.updateCategory(category,id);
     }
 
-    @DeleteMapping("/category/{id}")
-    public CategoryResponseDto deleteCategory(Long id){
+    @DeleteMapping("/{id}")
+    public CategoryResponseDto deleteCategory(@PathVariable Long id){
         return categoryService.deleteCategoryByID(id);
     }
 }

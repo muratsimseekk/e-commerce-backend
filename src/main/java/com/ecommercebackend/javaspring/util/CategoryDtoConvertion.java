@@ -1,6 +1,7 @@
 package com.ecommercebackend.javaspring.util;
 
 import com.ecommercebackend.javaspring.dto.CategoryResponseDto;
+import com.ecommercebackend.javaspring.dto.ProductResponseDto;
 import com.ecommercebackend.javaspring.entity.Category;
 
 import java.util.ArrayList;

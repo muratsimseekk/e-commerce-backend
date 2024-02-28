@@ -61,4 +61,13 @@ public class CategoryServiceImpl implements CategoryService{
         categoryRepository.delete(optional.get());
         return CategoryDtoConvertion.convertCategory(optional.get());
     }
+
+    @Override
+    public Category getCategory(Long id) {
+            Optional<Category> optional = categoryRepository.findById(id);
+            if (optional.isPresent()){
+                return optional.get();
+            }
+            throw new RuntimeException("Girilen id li category yok.");
+    }
 }

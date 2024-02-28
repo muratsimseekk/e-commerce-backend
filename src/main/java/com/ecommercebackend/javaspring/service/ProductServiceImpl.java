@@ -43,7 +43,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public ProductResponseDto addProduct(Product product , Long id) {
         //1 Category id ile ilgili Category bul.
-        Category category = categoryService.getCategoriesByID(id);
+        Category category = categoryService.getCategory(id);
         //2. categorynin product listesini yeni product i ekle.
         category.addProduct(product);
         //3 . Product a category i ekle
