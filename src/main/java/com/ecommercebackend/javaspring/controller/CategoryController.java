@@ -1,5 +1,6 @@
 package com.ecommercebackend.javaspring.controller;
 
+import com.ecommercebackend.javaspring.dto.CategoryResponseDto;
 import com.ecommercebackend.javaspring.entity.Category;
 import com.ecommercebackend.javaspring.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,28 +20,28 @@ public class CategoryController {
     }
 
     @GetMapping("/")
-    public List<Category> findAll(){
+    public List<CategoryResponseDto> findAll(){
         return categoryService.getCategories();
     }
 
     @GetMapping("/{id}")
-    public Category getCategoryByID(@PathVariable Long id){
+    public CategoryResponseDto getCategoryByID(@PathVariable Long id){
         return categoryService.getCategoriesByID(id);
     }
 
     @PostMapping("/")
-    public Category saveCategory(@RequestBody Category category){
+    public CategoryResponseDto saveCategory(@RequestBody Category category){
         return categoryService.addCategory(category);
     }
 
     @PutMapping("/category/{id}")
-    public Category updateCategory(@RequestBody Category category , @PathVariable Long id){
+    public CategoryResponseDto updateCategory(@RequestBody Category category , @PathVariable Long id){
 
         return categoryService.updateCategory(category,id);
     }
 
     @DeleteMapping("/category/{id}")
-    public Category deleteCategory(Long id){
+    public CategoryResponseDto deleteCategory(Long id){
         return categoryService.deleteCategoryByID(id);
     }
 }

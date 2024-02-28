@@ -1,7 +1,9 @@
 package com.ecommercebackend.javaspring.service;
 
+import com.ecommercebackend.javaspring.dto.CategoryResponseDto;
 import com.ecommercebackend.javaspring.entity.Category;
 import com.ecommercebackend.javaspring.repository.CategoryRepository;
+import com.ecommercebackend.javaspring.util.CategoryDtoConvertion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,28 +22,30 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public List<Category> getCategories() {
-        return categoryRepository.findAll();
+    public List<CategoryResponseDto> getCategories() {
+        List<Category> categories = categoryRepository.findAll();
+        return CategoryDtoConvertion.convertCategoryList(categories);
     }
 
     @Override
-    public Category getCategoriesByID(Long id) {
+    public CategoryResponseDto getCategoriesByID(Long id) {
         Optional<Category> optionalCategory = categoryRepository.findById(id);
 
         if (optionalCategory.isPresent()){
-            return optionalCategory.get();
+            return CategoryDtoConvertion.convertCategory(optionalCategory.get());
         }
         //TODO Eger eslesen id olmazsa Exception firlat.
         throw new RuntimeException("Eslesen id bulunamadi.");
     }
 
     @Override
-    public Category addCategory(Category category) {
-        return categoryRepository.save(category);
+    public CategoryResponseDto addCategory(Category category) {
+         categoryRepository.save(category);
+         return CategoryDtoConvertion.convertCategory(category);
     }
 
     @Override
-    public Category updateCategory(Category category , Long id) {
+    public CategoryResponseDto updateCategory(Category category , Long id) {
 
         return null;
 
@@ -49,13 +53,12 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public Category deleteCategoryByID(Long id) {
+    public CategoryResponseDto deleteCategoryByID(Long id) {
         Optional<Category> optional = categoryRepository.findById(id);
         if (!optional.isPresent()){
             throw new RuntimeException("id yok");
         }
-        Category deletedCategory = getCategoriesByID(id);
-        categoryRepository.delete(deletedCategory);
-        return deletedCategory;
+        categoryRepository.delete(optional.get());
+        return CategoryDtoConvertion.convertCategory(optional.get());
     }
 }
