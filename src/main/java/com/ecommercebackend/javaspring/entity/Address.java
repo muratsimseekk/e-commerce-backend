@@ -41,4 +41,7 @@ public class Address {
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToOne(mappedBy = "address" , cascade = CascadeType.ALL)
+    private Order order;
 }

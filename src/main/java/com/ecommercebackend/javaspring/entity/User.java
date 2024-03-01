@@ -1,6 +1,8 @@
 package com.ecommercebackend.javaspring.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,12 +22,18 @@ public class User {
     @Column(name = "id")
     private Long id;
 
+    @NotNull
+    @NotBlank
     @Column(name = "name")
     private String name ;
 
+    @NotNull
+    @NotBlank
     @Column(name = "email")
     private String email;
 
+    @NotNull
+    @NotBlank
     @Column(name = "password")
     private String password;
 
@@ -41,7 +49,7 @@ public class User {
     private List<Address> addressList;
 
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
-    private List<Card> cardList;
+    private List<Card> cardList ;
 
     public void addAddress(Address address){
         if (addressList == null){

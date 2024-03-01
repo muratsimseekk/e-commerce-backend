@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -36,6 +37,13 @@ public class Store {
 
     @OneToOne(mappedBy = "store",cascade = CascadeType.ALL)
     private User user;
+
+    public void addProduct(Product product){
+        if (product == null){
+            products = new ArrayList<>();
+        }
+        products.add(product);
+    }
 
 
 }
