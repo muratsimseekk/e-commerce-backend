@@ -1,16 +1,32 @@
 package com.ecommercebackend.javaspring.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+@Table(name = "user" , schema = "ecommerce")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "name")
     private String name ;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
 
     @OneToOne
@@ -27,5 +43,19 @@ public class User {
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
     private List<Card> cardList;
 
-    //TODO listler icin null check yaz.
+    public void addAddress(Address address){
+        if (addressList == null){
+            addressList =new ArrayList<>();
+        }
+        addressList.add(address);
+    }
+
+    public void addCard(Card card){
+        if (cardList == null){
+            cardList = new ArrayList<>();
+        }
+        cardList.add(card);
+    }
+
+
 }

@@ -43,10 +43,6 @@ public class Product {
     @Column(name = "stock")
     private Long stock;
 
-    @NotNull(message = "store_id cannot be null")
-    @Column(name = "store_id")
-    private Long storeId;
-
     @NotNull(message = "description cannot be null")
     @NotBlank(message = "description cannot be blank")
     @Column(name = "description")
