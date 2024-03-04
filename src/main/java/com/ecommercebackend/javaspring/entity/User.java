@@ -1,8 +1,10 @@
 package com.ecommercebackend.javaspring.entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Null;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,17 +39,22 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Nullable
     @OneToOne
-    @JoinColumn(name = "role_id",unique = true,nullable = false)
+    @JoinColumn(name = "role_id")
     private Role role;
 
+
+    @Nullable
     @OneToOne
-    @JoinColumn(name = "store_id" , unique = true,nullable = false)
+    @JoinColumn(name = "store_id" )
     private Store store;
 
+    @Nullable
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
     private List<Address> addressList;
 
+    @Nullable
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
     private List<Card> cardList ;
 
