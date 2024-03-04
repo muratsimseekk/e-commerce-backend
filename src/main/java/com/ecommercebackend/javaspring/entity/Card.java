@@ -32,7 +32,10 @@ public class Card {
     @Column(name = "card_name")
     private String card_name;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    @JoinColumn(name = "user_id",nullable = false)
-    private User user;
+//    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+//    @JoinColumn(name = "user_id")
+//    private User user;
+
+    @OneToOne(mappedBy = "card")
+    private Order order;
 }

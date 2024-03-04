@@ -1,5 +1,6 @@
 package com.ecommercebackend.javaspring.service;
 
+import com.ecommercebackend.javaspring.entity.Role;
 import com.ecommercebackend.javaspring.entity.User;
 import com.ecommercebackend.javaspring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService{
 
     private UserRepository userRepository;
+    private RoleService roleService;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
@@ -35,6 +37,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User addUser(User user) {
+        Role role = user.getRole();
+
         return userRepository.save(user);
     }
 

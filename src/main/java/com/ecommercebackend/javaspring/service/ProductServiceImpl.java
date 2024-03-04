@@ -2,7 +2,9 @@ package com.ecommercebackend.javaspring.service;
 
 import com.ecommercebackend.javaspring.dto.ProductResponseDto;
 import com.ecommercebackend.javaspring.entity.Category;
+import com.ecommercebackend.javaspring.entity.Order;
 import com.ecommercebackend.javaspring.entity.Product;
+import com.ecommercebackend.javaspring.entity.Store;
 import com.ecommercebackend.javaspring.repository.ProductRepository;
 import com.ecommercebackend.javaspring.util.ProductDtoConvertion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,17 @@ public class ProductServiceImpl implements ProductService{
 
 
     private CategoryService categoryService;
+    private StoreService storeService;
+    private OrderService orderService;
+
     private ProductRepository productRepository;
 
+
     @Autowired
-    public ProductServiceImpl(CategoryService categoryService, ProductRepository productRepository) {
+    public ProductServiceImpl(CategoryService categoryService, StoreService storeService, OrderService orderService, ProductRepository productRepository) {
         this.categoryService = categoryService;
+        this.storeService = storeService;
+        this.orderService = orderService;
         this.productRepository = productRepository;
     }
 
@@ -41,15 +49,18 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public ProductResponseDto addProduct(Product product , Long id) {
+    public ProductResponseDto addProduct(Product product ) {
         //1 Category id ile ilgili Category bul.
-        Category category = categoryService.getCategory(id);
+//        Category category = categoryService.getCategory(category_id);
+
+        //TODO order service ile order id cekilecek .
         //2. categorynin product listesini yeni product i ekle.
-        category.addProduct(product);
-        //3 . Product a category i ekle
-        product.setCategory(category);
-        //4. product i save et.
-         productRepository.save(product);
+//        category.addProduct(product);
+//        //3 . Product a category i ekle
+//        product.setCategory(category);
+//
+//        //4. product i save et.
+//         productRepository.save(product);
         return ProductDtoConvertion.convertProduct(product);
     }
 

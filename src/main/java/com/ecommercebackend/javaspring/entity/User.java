@@ -24,53 +24,49 @@ public class User {
     @Column(name = "id")
     private Long id;
 
-    @NotNull
-    @NotBlank
+
     @Column(name = "name")
     private String name ;
 
-    @NotNull
-    @NotBlank
+
     @Column(name = "email")
     private String email;
 
-    @NotNull
-    @NotBlank
+
     @Column(name = "password")
     private String password;
 
-    @Nullable
-    @OneToOne
+
+    @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
 
 
-    @Nullable
-    @OneToOne
-    @JoinColumn(name = "store_id" )
-    private Store store;
+//    @OneToOne
+//    @JoinColumn(name = "store_id" )
+//    private Store store;
 
-    @Nullable
-    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
-    private List<Address> addressList;
+//    @Nullable
+//    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+//    private List<Address> addressList;
+//
+//    @Nullable
+//    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+//    private List<Card> cardList ;
 
-    @Nullable
-    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
-    private List<Card> cardList ;
-
-    public void addAddress(Address address){
-        if (addressList == null){
-            addressList =new ArrayList<>();
-        }
-        addressList.add(address);
-    }
-
-    public void addCard(Card card){
-        if (cardList == null){
-            cardList = new ArrayList<>();
-        }
-        cardList.add(card);
-    }
+//    public void addAddress(Address address){
+//        if (addressList == null){
+//            addressList =new ArrayList<>();
+//        }
+//        addressList.add(address);
+//    }
+//
+//    public void addCard(Card card){
+//        if (cardList == null){
+//            cardList = new ArrayList<>();
+//        }
+//        cardList.add(card);
+//    }
 
 
 }

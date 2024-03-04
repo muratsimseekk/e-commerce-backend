@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -24,6 +27,13 @@ public class Role {
     @Column(name = "code")
     private String code;
 
-    @OneToOne(mappedBy = "role",cascade = CascadeType.ALL)
-    private User user;
+    @OneToMany(mappedBy = "role")
+    private List<User> userList;
+
+    public void addUser(User user){
+        if (user == null){
+            userList = new ArrayList<>();
+        }
+        userList.add(user);
+    }
 }

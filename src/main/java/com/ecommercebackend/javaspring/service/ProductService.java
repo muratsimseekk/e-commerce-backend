@@ -9,7 +9,7 @@ public interface ProductService {
 
     List<ProductResponseDto> getProductList();
     ProductResponseDto getProductByID(Long id);
-    ProductResponseDto addProduct(Product product , Long categoryID);
+    ProductResponseDto addProduct(Product product);
     ProductResponseDto deleteProduct(Long id);
 
 }

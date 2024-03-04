@@ -32,18 +32,6 @@ public class Store {
     @Column(name = "bank_account")
     private Long bank_account;
 
-    @OneToMany(mappedBy = "store" , cascade = CascadeType.ALL)
-    private List<Product> products;
-
-    @OneToOne(mappedBy = "store",cascade = CascadeType.ALL)
-    private User user;
-
-    public void addProduct(Product product){
-        if (product == null){
-            products = new ArrayList<>();
-        }
-        products.add(product);
-    }
-
-
+//    @OneToOne(mappedBy = "store")
+//    private User user;
 }

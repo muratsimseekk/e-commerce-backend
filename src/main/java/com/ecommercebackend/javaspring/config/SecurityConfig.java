@@ -14,14 +14,24 @@ public class SecurityConfig {
         return httpSecurity.csrf((csrf) -> csrf.disable()).authorizeHttpRequests(auth -> {
 
             //TODO add,update,delete islemleri sadece admin tarafindan yapilacak.
+
             auth.requestMatchers(HttpMethod.POST, "/v1/api/category/**").permitAll();
             auth.requestMatchers(HttpMethod.GET, "/v1/api/category/**").permitAll();
-            auth.requestMatchers(HttpMethod.GET,"/product/**").permitAll();
-            auth.requestMatchers(HttpMethod.GET,"/v1/api/product/**").permitAll();
             auth.requestMatchers(HttpMethod.DELETE, "/v1/api/category/**").permitAll();
+
+            auth.requestMatchers(HttpMethod.GET,"/v1/api/product/**").permitAll();
+
+
             auth.requestMatchers(HttpMethod.POST,"/v1/api/user/**").permitAll();
             auth.requestMatchers(HttpMethod.GET,"/v1/api/user/**").permitAll();
             auth.requestMatchers(HttpMethod.DELETE, "/v1/api/user/**").permitAll();
+
+            auth.requestMatchers(HttpMethod.GET,"/v1/api/order/**").permitAll();
+            auth.requestMatchers(HttpMethod.POST,"/v1/api/order/**").permitAll();
+
+            auth.requestMatchers(HttpMethod.GET,"/v1/api/address/**").permitAll();
+            auth.requestMatchers(HttpMethod.POST,"/v1/api/address/**").permitAll();
+            auth.requestMatchers(HttpMethod.DELETE, "/v1/api/address/**").permitAll();
             auth.anyRequest().authenticated();
 
         }).formLogin(Customizer.withDefaults()).httpBasic(Customizer.withDefaults()).build();

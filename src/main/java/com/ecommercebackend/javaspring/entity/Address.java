@@ -37,11 +37,13 @@ public class Address {
 
     @Column(name = "address")
     private String address;
+//
+//    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @OneToOne(mappedBy = "address" , cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "address_id")
     private Order order;
+
 }
