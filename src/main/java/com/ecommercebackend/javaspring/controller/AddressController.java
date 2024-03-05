@@ -23,9 +23,9 @@ public class AddressController {
         return addressService.getAddressList();
     }
 
-    @PostMapping("/")
-    public Address addAddress(@RequestBody Address address){
-        return addressService.addAddress(address);
+    @PostMapping("/{id}")
+    public Address addAddress(@RequestBody Address address , @PathVariable Long id){
+        return addressService.addAddress(address,id);
     }
 
     @DeleteMapping("/{id}")

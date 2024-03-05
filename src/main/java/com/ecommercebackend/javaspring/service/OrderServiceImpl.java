@@ -23,7 +23,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public Order createOrder(Order order) {
-        order.setAddress(addressService.addAddress(order.getAddress()));
+//        order.setAddress(addressService.addAddress(order.getAddress()));
         return orderRepository.save(order);
     }
 

@@ -42,24 +42,28 @@ public class User {
     private Role role;
 
 
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+    private List<Address> addressList;
+
+        public void addAddress(Address address){
+        if (addressList == null){
+            addressList =new ArrayList<>();
+        }
+        addressList.add(address);
+    }
+
 //    @OneToOne
 //    @JoinColumn(name = "store_id")
 //    private Store store;
 
-//    @Nullable
-//    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
-//    private List<Address> addressList;
+
+
 //
 //    @Nullable
 //    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
 //    private List<Card> cardList ;
 
-//    public void addAddress(Address address){
-//        if (addressList == null){
-//            addressList =new ArrayList<>();
-//        }
-//        addressList.add(address);
-//    }
+
 //
 //    public void addCard(Card card){
 //        if (cardList == null){

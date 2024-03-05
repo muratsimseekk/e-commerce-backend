@@ -37,11 +37,12 @@ public class Address {
 
     @Column(name = "address")
     private String address;
-//
-//    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-//    @JoinColumn(name = "user_id")
-//    private User user;
 
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    //TODO address response dto order null olarak gozukmesin
     @OneToOne(mappedBy = "address")
     private Order order;
 

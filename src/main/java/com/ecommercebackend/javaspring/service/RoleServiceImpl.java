@@ -25,6 +25,16 @@ public class RoleServiceImpl implements RoleService{
     }
 
     @Override
+    public Role findRole(Long roleID) {
+        Optional<Role> role = roleRepository.findById(roleID);
+
+        if (role.isPresent()){
+            return role.get();
+        }
+        throw new RuntimeException("Id bulunamadi");
+    }
+
+    @Override
     public RoleResponseDto addRole(Role role) {
          Role savedRole = roleRepository.save(role);
          return new RoleResponseDto(savedRole.getId(), savedRole.getName(), savedRole.getCode());
@@ -39,4 +49,6 @@ public class RoleServiceImpl implements RoleService{
         }
         throw new RuntimeException("Role id bulunamadi");
     }
+
+
 }

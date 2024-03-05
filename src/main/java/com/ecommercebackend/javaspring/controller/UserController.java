@@ -1,5 +1,6 @@
 package com.ecommercebackend.javaspring.controller;
 
+import com.ecommercebackend.javaspring.dto.UserResponseDto;
 import com.ecommercebackend.javaspring.entity.User;
 import com.ecommercebackend.javaspring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +18,22 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public List<User> getAllUsers(){
+    public List<UserResponseDto> getAllUsers(){
         return userService.getUserList();
     }
 
     @GetMapping("/{id}")
-    public User getUserByID(@PathVariable Long id){
+    public UserResponseDto getUserByID(@PathVariable Long id){
         return userService.getUserByID(id);
     }
 
-    @PostMapping("/")
-    public User saveUser(@RequestBody User user){
-        return userService.addUser(user);
+    @PostMapping("/{roleID}")
+    public UserResponseDto saveUser(@RequestBody User user , @PathVariable Long roleID){
+        return userService.addUser(user,roleID);
     }
 
     @DeleteMapping("/{id}")
-    public User deleteUser(Long id){
+    public UserResponseDto deleteUser(Long id){
         return userService.deleteUser(id);
     }
 }

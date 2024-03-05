@@ -36,6 +36,7 @@ public class Card {
 //    @JoinColumn(name = "user_id")
 //    private User user;
 
+    //TODO card response dto order null olarak gozukmesin
     @OneToOne(mappedBy = "card")
     private Order order;
 }

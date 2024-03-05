@@ -11,6 +11,8 @@ public interface RoleService {
 
     List<Role> findAll();
 
+    Role findRole(Long roleID);
+
     RoleResponseDto addRole(Role role);
 
     RoleResponseDto deleteRole(Long id);
