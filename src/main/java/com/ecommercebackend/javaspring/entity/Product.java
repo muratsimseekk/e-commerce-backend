@@ -53,8 +53,8 @@ public class Product {
     @JoinColumn(name = "store_id")
     private Store store;
 
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,CascadeType.REFRESH})
-    @JoinColumn(name = "order_id")
-    private Order order;
+//    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,CascadeType.REFRESH})
+//    @JoinColumn(name = "order_id")
+//    private Order order;
 
 }

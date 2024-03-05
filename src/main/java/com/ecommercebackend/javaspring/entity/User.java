@@ -43,7 +43,7 @@ public class User {
 
 
 //    @OneToOne
-//    @JoinColumn(name = "store_id" )
+//    @JoinColumn(name = "store_id")
 //    private Store store;
 
 //    @Nullable

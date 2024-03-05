@@ -34,4 +34,14 @@ public class Store {
 
 //    @OneToOne(mappedBy = "store")
 //    private User user;
+
+    @OneToMany(mappedBy = "store")
+    private List<Product> products;
+
+    public void addProduct(Product product){
+        if (products == null){
+            products = new ArrayList<>();
+        }
+        products.add(product);
+    }
 }

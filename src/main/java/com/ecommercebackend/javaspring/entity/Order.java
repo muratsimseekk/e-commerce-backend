@@ -23,8 +23,8 @@ public class Order {
     @Column(name = "order_date")
     private Instant order_date;
 
-    @OneToMany(mappedBy = "order" , cascade = CascadeType.ALL)
-    private List<Product> productList;
+//    @OneToMany(mappedBy = "order" , cascade = CascadeType.ALL)
+//    private List<Product> productList;
 
     @OneToOne
     @JoinColumn(name = "address_id")
@@ -34,10 +34,10 @@ public class Order {
     @JoinColumn(name = "card_id")
     private Card card;
 
-    public void addProduct(Product product){
-        if (productList== null){
-            productList = new ArrayList<>();
-        }
-        productList.add(product);
-    }
+//    public void addProduct(Product product){
+//        if (productList== null){
+//            productList = new ArrayList<>();
+//        }
+//        productList.add(product);
+//    }
 }

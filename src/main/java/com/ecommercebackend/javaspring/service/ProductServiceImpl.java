@@ -19,16 +19,16 @@ public class ProductServiceImpl implements ProductService{
 
     private CategoryService categoryService;
     private StoreService storeService;
-    private OrderService orderService;
+
 
     private ProductRepository productRepository;
 
 
     @Autowired
-    public ProductServiceImpl(CategoryService categoryService, StoreService storeService, OrderService orderService, ProductRepository productRepository) {
+    public ProductServiceImpl(CategoryService categoryService, StoreService storeService, ProductRepository productRepository) {
         this.categoryService = categoryService;
         this.storeService = storeService;
-        this.orderService = orderService;
+
         this.productRepository = productRepository;
     }
 
@@ -49,18 +49,20 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public ProductResponseDto addProduct(Product product ) {
+    public ProductResponseDto addProduct(Product product , Long category_id , Long store_id ) {
         //1 Category id ile ilgili Category bul.
-//        Category category = categoryService.getCategory(category_id);
-
+        Category category = categoryService.getCategory(category_id);
+        Store store = storeService.getStoreInfos(store_id);
         //TODO order service ile order id cekilecek .
         //2. categorynin product listesini yeni product i ekle.
-//        category.addProduct(product);
+        category.addProduct(product);
+        store.addProduct(product);
 //        //3 . Product a category i ekle
-//        product.setCategory(category);
+        product.setCategory(category);
+        product.setStore(store);
 //
 //        //4. product i save et.
-//         productRepository.save(product);
+         productRepository.save(product);
         return ProductDtoConvertion.convertProduct(product);
     }
 
