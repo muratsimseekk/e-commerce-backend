@@ -20,9 +20,9 @@ public class CardController {
         this.cardService = cardService;
     }
 
-    @GetMapping("/{userId}")
-    public List<Card> findAllByUser(@PathVariable Long userId) {
-        return cardService.getCardListByUser(userId);
+    @GetMapping
+    public List<Card> findAllByUser() {
+       return cardService.getCardListByUser();
     }
 
     @PostMapping

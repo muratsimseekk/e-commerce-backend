@@ -19,8 +19,6 @@ public class ProductServiceImpl implements ProductService{
 
     private CategoryService categoryService;
     private StoreService storeService;
-
-
     private ProductRepository productRepository;
 
 
@@ -28,7 +26,6 @@ public class ProductServiceImpl implements ProductService{
     public ProductServiceImpl(CategoryService categoryService, StoreService storeService, ProductRepository productRepository) {
         this.categoryService = categoryService;
         this.storeService = storeService;
-
         this.productRepository = productRepository;
     }
 
@@ -48,6 +45,8 @@ public class ProductServiceImpl implements ProductService{
         throw new RuntimeException("eslesen bir product yok");
     }
 
+    //TODO addProduct yaparken store da ekliyorum . Ancak store list i get request ile goremiyorum .
+    // Product ekleme kismi su and 404 hatasi veriyor . Iliskili olabilir .
     @Override
     public ProductResponseDto addProduct(Product product , Long category_id , Long store_id ) {
         //1 Category id ile ilgili Category bul.
@@ -77,17 +76,5 @@ public class ProductServiceImpl implements ProductService{
         //TODO eslesen bir id bulunmazsa Exception firlat.
     }
 
-    //    @Override
-//    public ProductResponseDto save(Long categoryID, Product product) {
-//        //1 Category id ile ilgili Category bul.
-//       Category category = categoryService.getCategoriesByID(categoryID);
-//       //2. categorynin product listesini yeni product i ekle.
-//        category.addProduct(product);
-//        //3 . Product a category i ekle
-//        product.setCategory(category);
-//        //4. product i save et.
-//        Product savedProduct = productRepository.save(product);
-////        return new ProductResponseDto()
-//        return null;
-//    }
+
 }

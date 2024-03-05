@@ -27,9 +27,8 @@ public class CardServiceImpl implements CardService{
     }
 
     @Override
-    public List<Card> getCardListByUser(Long id) {
-//        return cardRepository.findAllByUserId(id);
-    return  null;
+    public List<Card> getCardListByUser() {
+        return cardRepository.findAll();
     }
 
     @Override

@@ -18,7 +18,8 @@ public class StoreController {
         this.storeService = storeService;
     }
 
-    @GetMapping("/")
+    //TODO getStores 400 Bad request hatasi veriyor coz.
+    @GetMapping("/get")
     public List<Store> getStores(){
         return storeService.getStores();
     }
