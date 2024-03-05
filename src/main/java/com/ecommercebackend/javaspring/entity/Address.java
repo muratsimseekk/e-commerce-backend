@@ -42,8 +42,7 @@ public class Address {
 //    @JoinColumn(name = "user_id")
 //    private User user;
 
-    @OneToOne
-    @JoinColumn(name = "address_id")
+    @OneToOne(mappedBy = "address")
     private Order order;
 
 }

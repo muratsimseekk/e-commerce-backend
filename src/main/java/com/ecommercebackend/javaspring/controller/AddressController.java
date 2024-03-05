@@ -24,12 +24,12 @@ public class AddressController {
     }
 
     @PostMapping("/")
-    public Address addAddress(Address address){
+    public Address addAddress(@RequestBody Address address){
         return addressService.addAddress(address);
     }
 
     @DeleteMapping("/{id}")
-    public Address deleteAddress(Long id){
+    public Address deleteAddress(@PathVariable Long id){
         return addressService.deleteAddress(id);
     }
 }

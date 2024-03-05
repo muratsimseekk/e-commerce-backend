@@ -31,6 +31,8 @@ public class CardServiceImpl implements CardService{
         return cardRepository.findAll();
     }
 
+    //TODO update ve delete metodlar doldurulacak
+
     @Override
     public Card updateCard(Card card) {
         return null;
